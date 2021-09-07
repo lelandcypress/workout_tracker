@@ -2,7 +2,7 @@ const express = require("express");
 const path = require("path");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-//const routes = require("./controllers");
+const routes = require("./controllers/routes");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +18,6 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useFindAndModify: false,
 });
 
-//app.use(routes);
+app.use(routes);
 
 app.listen(PORT, () => console.log("Now listening"));
