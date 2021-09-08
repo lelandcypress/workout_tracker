@@ -29,4 +29,14 @@ router.post("/api/workouts", async ({ body }, res) => {
   }
 });
 
+router.get("/api/workouts/range", async (req, res) => {
+  try {
+    const workout = await Workout.find({}).sort({ date: -1 });
+    console.log(workout);
+    res.json(workout);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+});
+
 module.exports = router;
