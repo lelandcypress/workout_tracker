@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const db = require("../models/exercise");
+const db = require("../models/workouts");
 
 mongoose.connect("mongodb://localhost/workout", {
   useNewUrlParser: true,
@@ -114,12 +114,34 @@ const workoutSeed = [
     day: new Date(new Date().setDate(new Date().getDate() - 1)),
     exercises: [
       {
+        type: "cardio",
+        name: "Running",
+        duration: 25,
+        distance: 4,
+      },
+      {
         type: "resistance",
         name: "Military Press",
         duration: 20,
         weight: 275,
         reps: 10,
         sets: 4,
+      },
+      {
+        type: "resistance",
+        name: "Lateral Raise",
+        duration: 20,
+        weight: 15,
+        reps: 12,
+        sets: 3,
+      },
+      {
+        type: "resistance",
+        name: "Upright Rows",
+        duration: 10,
+        weight: 150,
+        reps: 12,
+        sets: 3,
       },
     ],
   },
