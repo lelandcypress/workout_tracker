@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+//Breaking the exercises into a seperate schema allows for more efficient code maintenance//
 const ExerciseSchema = new Schema({
   type: {
     type: String,
@@ -33,7 +34,7 @@ const ExerciseSchema = new Schema({
     trim: true,
   },
 });
-
+//Leveraging subdocument arrays allows use to use .push method to add exercises to each workout//
 const WorkoutSchema = new Schema({
   day: {
     type: Date,
