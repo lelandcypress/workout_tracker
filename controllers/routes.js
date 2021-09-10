@@ -21,7 +21,7 @@ router.get("/api/workouts", async (req, res) => {
 
 router.post("/api/workouts", async (req, res) => {
   try {
-    const workout = await Workout.create();
+    const workout = await Workout.create({});
 
     res.json(workout);
   } catch (err) {
@@ -40,13 +40,12 @@ router.get("/api/workouts/range", async (req, res) => {
 
 router.put("/api/workouts/:id", async (req, res) => {
   try {
-    ({ body, id } = req);
-    const query = { _id: id };
-    const update = { exercises: body };
-    const workout = await Workout.findOneAndUpdate(query, update, {
-      upsert: true,
-    });
-    console.log("PUT REQUEST +" + workout);
+    const id = req.params.id;
+    const body = req.body;
+    const workout = await Workout.findOneAndUpdate(
+      { _id: id },
+      { $push: { exercises: body } }
+    );
     res.json(workout);
   } catch (err) {
     res.status(400).json(err);
