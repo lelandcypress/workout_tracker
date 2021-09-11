@@ -22,7 +22,6 @@ router.get("/api/workouts", async (req, res) => {
 router.post("/api/workouts", async (req, res) => {
   try {
     const workout = await Workout.create({});
-
     res.json(workout);
   } catch (err) {
     res.status(400).json(err);
