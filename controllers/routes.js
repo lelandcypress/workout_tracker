@@ -13,6 +13,15 @@ router.get("/stats", (req, res) => {
 router.get("/api/workouts", async (req, res) => {
   try {
     const workout = await Workout.find({}).sort({ date: -1 });
+
+    /* workout.aggregate([
+      {
+        $addFields: {
+          totalDuration: { $sum: "$exercises.duration" },
+        },
+      },
+    ]);*/
+
     res.json(workout);
   } catch (err) {
     res.status(400).json(err);

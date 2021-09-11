@@ -35,12 +35,23 @@ const ExerciseSchema = new Schema({
   },
 });
 //Leveraging subdocument arrays allows use to use .push method to add exercises to each workout//
-const WorkoutSchema = new Schema({
-  day: {
-    type: Date,
-    default: Date.now,
+//Using Virtuals to render the total duration on the frontend. However, remember that Virtuals do not get stored on MongoDB//
+const opts = { toJSON: { virtuals: true } };
+const WorkoutSchema = new Schema(
+  {
+    day: {
+      type: Date,
+      default: Date.now,
+    },
+    exercises: [ExerciseSchema],
   },
-  exercises: [ExerciseSchema],
+  opts
+);
+
+WorkoutSchema.virtual("totalDuration").get(function () {
+  return this.exercises.reduce((total, exercise) => {
+    return total + exercise.duration;
+  }, 0);
 });
 
 const Workout = mongoose.model("Workout", WorkoutSchema);

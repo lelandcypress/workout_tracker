@@ -21,13 +21,21 @@ If running locally ensure that you have installed all node packages before kicki
 ## Usage
 
 1. Upon initial navigation the client will be greated at the homepage with their previous workout statistics.
+
+   ![Homepage](./pics/tracker.PNG)
+
 2. User will have the option to either create a new workout or to add an exercise to an existing workout.
 3. Either option will prompt a drop down list where one can select resistance or cardio.
+
+   ![Add Exercise](./pics/add.PNG)
+
 4. Depending on which type selected the user will be prompted for information on the exercise.
 5. If the user has another exercise to add, they can click "Add Exercise". If this is the last exercise, select "Complete"
 6. Either option will send a PUT request which will update the exercise array associated with the workouts schema.
 7. Homepage window will be updated with the latest workout stats
 8. User can navigate to the Dashboard where they can see their workout trends.
+
+![Chart](./pics/chart.PNG)
 
 ## License
 
