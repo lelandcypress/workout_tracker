@@ -14,6 +14,8 @@
 
 A handy web application that helps you meet your goals by logging your workouts.
 
+Deployed App: https://stark-oasis-70234.herokuapp.com/
+
 ## Installation
 
 If running locally ensure that you have installed all node packages before kicking anything off. This app uses Mongo to store workout data so make sure you have Mongo installed.
